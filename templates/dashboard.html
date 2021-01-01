@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+<a href="{% url 'article:addcar' %}" class="btn btn-danger my-2">Yeni Ekle</a>
+
+{% include 'includes/dashtable.html' %}
+
+
+    
+{% endblock body %}
+    

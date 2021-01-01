@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+nav{
+    position: relative;
+    width: 100vw;
+    height: 100px;
+    background-color: rgb(0, 0, 0);
+    padding: 0px 15%;
+    color: white;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    
+}
+nav > a{
+    line-height: 100px;
+    font-family: 'Pacifico', cursive;
+    font-size: 40px;
+    color: white;
+    text-decoration: underline yellow;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
+
+}
+nav > a > span{
+    color: yellow;
+    text-decoration: underline white;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
+}
+
+nav > a:hover{
+    color: yellow;
+    text-decoration: underline white;
+}
+nav > a:hover> span{
+    color: white;
+    text-decoration:underline yellow;
+}
+nav > ul {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    list-style: none;
+    float: right;
+    margin: auto 0px auto auto;
+}
+nav > ul > li {
+    float: right;
+    margin-left: 40px;
+    justify-content: center;
+}
+nav > ul > li:hover{
+
+}
+nav > ul > li > a {
+    width: 100%;
+    display: inline-block;
+    color: white;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+}
+nav > ul > li > a:hover{
+    color: tomato;
+    text-decoration: none;
+}
+
+#CarList{
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    padding-top: 50px;
+    font-family: 'Raleway', sans-serif;
+    overflow: hidden;
+    
+}
+.spesific{
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    background-color: #F7F7F7;
+}
+
+.CarPic{
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+.CarPic img {
+    width: 100%;
+    height: 100%;
+}
+
+.spesific > h5 {
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.spesific > ul {
+    width: 100%;
+    list-style: none;
+    margin-bottom: 30px;
+}
+.spesific > ul span{
+    font-size: 15px;
+}
+.spesific > ul > li {
+    text-align: center;
+    width: calc(100% / 3);
+    float: left;
+}
+#Filter{
+    background-color: #F7F7F7;
+    width: 100%;
+    height: 500px;
+}

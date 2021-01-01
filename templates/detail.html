@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+            <img src="{{ i.pic.url }}" alt="Image" width="460" height="345">
+
+{% for i in article %}
+    {{i.make}}
+{% endfor %}
+    
+    
+{% endblock body %}
+    

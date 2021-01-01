@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div id="Hg" class="row">
+        <img src="{% static 'img/pex.jpg' %}" class="" alt="">
+        <nav>
+            <a href="{% url 'article:index' %}"><span>Golden</span>Cars</a>
+            <ul>
+                <li><a href="">İletişim</a></li>
+                <li><a href="">Biz Kimiz</a></li>
+                <li><a href="{% url 'article:carlist' %}">Satıştaki Araçlar</a></li>
+            </ul>
+        </nav>
+        
+    </div>
+
+</body>
+</html>

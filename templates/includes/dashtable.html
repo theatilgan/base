@@ -1,0 +1,48 @@
+<table class="table table-light">
+    <thead>
+        <tr>
+            <td>Ekleyen</td>
+            <td>Id</td>
+            <td>Marka</td>
+            <td>Model</td>
+            <td>Fiyat</td>
+            <td>Satış</td>
+            <td>Güncelle</td>
+            <td>Sil</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for article in articles %}
+
+        <tr>
+            <td>{{article.author}}</td>
+            <td><a href="{% url 'article:detail' article.id %}">{{article.id}}</a></td>
+            <td>{{article.make}}</td>
+            <td>{{article.model}}</td>
+            <td>{{article.price}}</td>
+            
+            {% if article.isSold == False %}
+            <td class="status">Listelenmiş</td>
+            {% else %}
+            <td><button class="btn btn-danger" >Satılmış</button></td>
+            {% endif %}
+            <td><a class="btn btn-danger" type="button">Güncelle</a></td>
+            <td><a href="{% url 'article:delete' article.id %}" class="btn btn-danger" type="button">Sil</a></td>
+        </tr>
+            
+        {% endfor %}
+            
+    </tbody>
+</table>
+
+
+<script>
+/*    $( ".status" ).mouseover(function() {
+        $(this).text( "Satıldı" );
+    });
+    $( ".status" ).mouseout(function() {
+        $(this).text( "Listelenmiş" );
+    });
+  */  
+</script>
