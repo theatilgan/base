@@ -43,10 +43,28 @@ class Article(models.Model):
     variant = models.CharField(blank=True,null=True,max_length = 20,verbose_name="Paket")
     content = RichTextField(blank=True,null=True,verbose_name="Detay")
     isSold = models.BooleanField(default=False,verbose_name="Durum")
+    date = models.DateTimeField(auto_now_add=True,verbose_name="Tarih")
 
     def __str__(self):
         return self.make
+
+ReplyOption = {
+    ("Mail","Mail"),
+    ("Telefon","Telefon")
+}        
     
+class Message (models.Model):
+
+    nameSurname = models.CharField(max_length=25, verbose_name="Ad Soyad")
+    replyOption = models.TextField(choices=ReplyOption,verbose_name="Nasıl dönüş yapalım")
+    phone = models.PositiveIntegerField(blank=True,null=True,verbose_name="Telefon")
+    mail = models.CharField(max_length=30,blank=True,null=True,verbose_name="Mail")
+    subject= models.TextField(blank=False,null=False,max_length=20,verbose_name="Konu")
+    isDone = models.BooleanField(default=False,verbose_name="Dönüş Yapıldı")
+    date = models.DateTimeField(auto_now_add=True,verbose_name="Tarih")
+
+    def __str__(self):
+        return self.nameSurname
 
     
 

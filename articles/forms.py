@@ -1,5 +1,5 @@
 from django import forms
-from .models import Article
+from .models import Article,Message
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
@@ -17,4 +17,14 @@ class ArticleForm(forms.ModelForm):
             "content",
             "isSold",
 
+        ]
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = [
+            "nameSurname",
+            "replyOption",
+            "phone",
+            "mail",
+            "subject",
         ]

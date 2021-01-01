@@ -18,6 +18,9 @@
                 <li><a href="">İletişim</a></li>
                 <li><a href="">Biz Kimiz</a></li>
                 <li><a href="{% url 'article:carlist' %}">Satıştaki Araçlar</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'article:dashboard' %}">Dashboard</a></li>
+                {% endif %}
             </ul>
         </nav>
         

@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect,get_object_or_404,reverse
-from .forms import ArticleForm
-from .models import Article
+from .forms import ArticleForm,MessageForm
+from .models import Article,Message
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from rest_framework.views import APIView
@@ -17,11 +17,25 @@ def carlist(request):
     articles = Article.objects.all()
     return render(request,"carlist.html",{"articles":articles})
 
+def contact(request):
+    form = MessageForm(request.POST or None,request.FILES or None)
+    context = {
+        "form":form,
+    }
+    if form.is_valid():
+        article = form.save(commit=False)
+        article.save()
+
+        return redirect("article:index")
+    return render(request,"contact.html",context)
+
 @login_required(login_url = "user:login")
 def dashboard(request):
     articles = Article.objects.all()
+    replies = Message.objects.all() 
     context = {
-        "articles":articles
+        "articles":articles,
+        "replies":replies
     }
     return render(request,"dashboard.html",context)
 

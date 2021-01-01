@@ -2,10 +2,47 @@
 
 
 {% block body %}
-
+<br>
+<p>Hoşgeldiniz: {{request.user}}</p>
 <a href="{% url 'article:addcar' %}" class="btn btn-danger my-2">Yeni Ekle</a>
 
-{% include 'includes/dashtable.html' %}
+<div class="row">
+    <div class="col-lg-8" style="border: solid 1px lightgrey ;">
+        {% include 'includes/dashtable.html' %}
+    </div>
+    <div class="col-lg-4" style="border: solid 1px lightgrey ;">
+            <table class="table table-light">
+                <thead>
+                    <tr>
+                        <td>İsim</td>  
+                        <td>Tarih</td>   
+                        <td>Kontrol</td> 
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for message in replies %}
+                    {% if message.isDone == False %}
+                    <tr class="table-danger">
+                        <td>{{message.nameSurname}}</td>
+                        <td>{{message.date |date:"Y-m-d"}}</td>
+                        <td>{{message.isDone}}</td>
+                    </tr>
+                    {% else %}
+                    <tr class="table-success">
+                        <td>{{message.nameSurname}}</td>
+                        <td>{{message.date |date:"Y-m-d"}}</td>
+                        <td>{{message.isDone}}</td>
+                    </tr>
+                    {% endif %}
+                        
+                    {% endfor %}
+                        
+                    
+                </tbody>
+            </table>
+    </div>
+</div>
 
 
     
