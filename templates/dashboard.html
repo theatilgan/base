@@ -24,7 +24,7 @@
                     {% for message in replies %}
                     {% if message.isDone == False %}
                     <tr class="table-danger">
-                        <td>{{message.nameSurname}}</td>
+                        <td><a data-message="{{message.subject}}">{{message.nameSurname}}</a></td>
                         <td>{{message.date |date:"Y-m-d"}}</td>
                         <td>{{message.isDone}}</td>
                     </tr>
@@ -33,12 +33,18 @@
                         <td>{{message.nameSurname}}</td>
                         <td>{{message.date |date:"Y-m-d"}}</td>
                         <td>{{message.isDone}}</td>
+                        
                     </tr>
                     {% endif %}
-                        
+                    
                     {% endfor %}
                         
-                    
+                    <script>
+                        $('a').click(function(){
+                            var data = $(this).attr("data-message")
+                            alert(data)
+                        })
+                    </script>
                 </tbody>
             </table>
     </div>
