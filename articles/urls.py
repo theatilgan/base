@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from rest_framework.urlpatterns import format_suffix_patterns
+from .api import  ArticleApi,ArticleCreateApi,ArticleUpdateApi,ArticleDeleteApi
 
 app_name = "article"
 
@@ -13,6 +14,13 @@ urlpatterns = [
     path('delete/<int:id>',views.deleteCar,name = "delete"),
     path('dashboard/', views.dashboard, name = "dashboard"),
 
-    path('cars/', views.AracListesi.as_view()),
+    # API
+    path('api/',ArticleApi.as_view()),
+    path('api/create',ArticleCreateApi.as_view()),
+    path('api/<int:pk>',ArticleUpdateApi.as_view()),
+    path('api/<int:pk>/delete',ArticleDeleteApi.as_view()),
+
+
+    
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

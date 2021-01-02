@@ -3,10 +3,9 @@ from .forms import ArticleForm,MessageForm
 from .models import Article,Message
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .serializers import ArticleSerializer
+
+
+
 
 # Create your views here.
 
@@ -71,14 +70,3 @@ def deleteCar(request,id):
 
     return redirect("article:dashboard")
     
-
-# API 
-class AracListesi(APIView):
-    def get(self, request):
-            araclar = Article.objects.all()
-            serializer = ArticleSerializer(araclar, many=True)
-            return  Response(serializer.data)
-    def post(self,request):
-        print("###############################")
-        print("PoST")
-        print("###############################")

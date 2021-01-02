@@ -6,4 +6,17 @@ class ArticleSerializer(serializers.ModelSerializer):
         model = Article
         # fields = ('alis','satis') // belirtilen kisimlari ceker.
         # fields = '__all__' // tum kisimlari ceker.
-        fields = '__all__'
+        fields = [
+            "pic",
+            "year",
+            "km",
+            "price",
+            "make",
+            "model",
+            "fuelType",
+            "bodyType",
+            "engine",
+            "variant",
+            "content",
+            "isSold",
+        ]
