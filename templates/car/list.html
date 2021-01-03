@@ -1,0 +1,129 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% load static %}
+
+<div id="CarList" class="row">
+
+    <div id="Filter" class="row">
+        <div class="col-xl-3">
+            <h5>Filtreleme</h5>
+            <p id="carCount">{{carCount}} araç listelendi</p>
+        </div>
+        <div class="col-xl-3">
+            <div class="input-group mt-1">
+                <div class="input-group-append">
+                    <span class="input-group-text">Bayi: </span>
+                </div>
+                <select class="form-control" id="user">
+                    <option value="Hepsi">HEPSİ</option>
+                    <option value="İstanbul">İSTANBUL</option>
+                    <option value="Ankara">ANKARA</option>
+                    <option value="İzmir">İZMİR</option>
+                    <option value="Antalya">ANTALYA</option>
+                    <option value="Bursa">BURSA</option>
+
+                </select>
+            </div>
+            <div class="input-group mt-1">
+                <div class="input-group-append">
+                    <span class="input-group-text">Vites: </span>
+                </div>
+                <select class="form-control" id="transmissionval">
+                    <option value="Hepsi">Hepsi</option>
+                    <option value="Otomatik">Otomatik</option>
+                    <option value="Yarı Otomatik">Yarı Otomatik</option>
+                    <option value="Manuel">Manuel</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xl-3">
+            <div class="input-group mt-1">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="lbminval">Min: 110 Bin</span>
+                </div>
+                <div class="form-control">
+                    <input style="width: 100%;" name="minPrice" id="minval" value="110" min="100" max="999"
+                        type="range">
+                </div>
+            </div>
+            <div class="input-group mt-1">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="lbmaxval">Max: 600 Bin</span>
+                </div>
+                <div class="form-control ">
+                    <input style="width: 100%;" name="maxPrice" id="maxval" value="600" min="100" max="999"
+                        type="range">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3">
+
+            <div class="input-group mt-1">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="lbfuel">Yakıt: </span>
+                </div>
+                <select class="form-control" name="fuel" id="fuelval">
+                    <option value="Hepsi">Hepsi</option>
+                    <option value="Benzin">Benzin</option>
+                    <option value="Benzin Lpg">Benzin & Lpg</option>
+                    <option value="Dizel">Dizel</option>
+                    <option value="Elektrik">Elektrik</option>
+                    <option value="Hybrid">Hybrid</option>
+                </select>
+            </div>
+            <div class="input-group mt-1">
+                {% csrf_token %}
+                <button id="btSearch" style="width: 100%;" class="btn btn-dark">Ara</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        $('#btSearch').click(function () {
+            $user = $('#user').val()
+            $minval = $('#minval').val()
+            $maxval = $('#maxval').val()
+            $fuel = $('#fuelval').val()
+            $transmission = $('#transmissionval').val()
+
+            $.ajax({
+                url: '',
+                type: 'POST',
+                data: {
+                    user: $user,
+                    minPrice: $minval,
+                    maxPrice: $maxval,
+                    fuel: $fuel,
+                    transmission: $transmission,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function(a){
+                    $('#AjaxCarLoad').html(a)
+                    $('#carCount').text($('#carListA').attr("data-count") + " araç listelendi")
+                }
+            });
+        })
+        function carCount(){
+
+        }
+
+        var minval = document.getElementById("minval");
+        var lbminval = document.getElementById("lbminval");
+        var maxval = document.getElementById("maxval");
+        var lbmaxval = document.getElementById("lbmaxval");
+
+        minval.oninput = function () {
+            lbminval.innerHTML = "Min: " + this.value + " Bin";
+        }
+        maxval.oninput = function () {
+            lbmaxval.innerHTML = "Max: " + this.value + " Bin";
+        }
+
+    </script>
+    <div id="AjaxCarLoad" >
+        {% include 'includes/cartable.html' %}
+    </div>
+</div>
+
+{% endblock body %}

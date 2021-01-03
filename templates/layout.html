@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-    <title>Atılgan Aktaş Jr. Developer</title>
+    
+    <title>Goldens: Hızlı tutkulu hatasız</title>
 </head>
 
 <body>
 
     {% include 'includes/navbar.html' %}
-    <div id="Main" class="container">
+    <div class="container">
         {% if messages %}
                 
                     {% for message in messages %}
@@ -30,6 +30,9 @@
                     {% endfor %}
                 
                 {% endif %}
+        
+    </div>
+    <div id="Main">
         {% block body %}
         {% endblock body %}
     </div>

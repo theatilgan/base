@@ -84,3 +84,48 @@ nav > ul > li > a:hover{
     z-index: -1;
     position: absolute;
 }
+#Sec1{
+    width: 100vw;
+    height: calc(100vh - 100px);
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+#Sec1 > form {
+    
+    width: 350px;
+    height: 500px;
+    margin-left: calc((100% - 350px) / 2);
+    margin-top: 20px;
+    border: solid 2px tomato;
+    border-radius: 5px;
+    padding: 50px 35px;
+    background-color: white;
+    
+    
+}
+#Sec1 > form label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    width: 100%;
+
+}
+#Sec1 > form button{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    width: 130px;
+    height: 45px;
+    margin-left: calc((100% - 130px) / 2);
+    margin-top: 30px;
+    background-color: #DA1C36;
+    outline: none;
+    border: none;
+    box-shadow: lightgrey 0px 6px 20px 6px;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
+}
+#Sec1 > form button:hover{
+    font-size: large;
+}
+

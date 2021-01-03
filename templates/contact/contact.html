@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+{% load crispy_forms_tags %}
+<form method="post" class="mt-3" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="offset-4 col-md-4">
+            {{form.media}}
+            {{form|crispy}}
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="offset-4 col-md-4">
+            <button type = "submit" class = "btn btn-danger">Gönder</button>
+        </div>
+    </div>
+    
+</form>
+
+<script>
+    $(document).ready(function(){
+        $('#div_id_phone').hide()
+        $('#div_id_mail').hide()
+    })
+    $('#id_replyOption').change(function(){
+        if ($(this).val() == "Telefon"){
+            $('#div_id_mail').hide()
+            $('#div_id_phone').show()
+        }
+        else{
+            $('#div_id_phone').hide()
+            $('#div_id_mail').show()
+
+        }
+    })
+</script>
+    
+{% endblock body %}
+    

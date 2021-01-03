@@ -1,0 +1,32 @@
+
+{% if articles %}
+
+<div id="carListA" class="row" data-count="{{carCount}}">
+
+    {% for article in articles %}
+    <div class="col-md-6 col-lg-4">
+        <div class="CarPic">
+            {% if article.pic %}
+            <img src="{{article.pic.url}}" class="img-thumbnail" alt="">
+            {% else %}
+            <img src="../static/img/favicon.jpg" class="img-thumbnail" alt="">
+
+            {% endif %}
+        </div>
+        <div class="spesific">
+            <h5>{{article.make}} {{article.model}}</h5>
+
+            <ul>
+                <li><span>{{article.year}}</span></li>
+                <li><span>{{article.transmission}}</span></li>
+                <li><span>{{article.fuelType}}</span></li>
+            </ul>
+            <br>
+            <hr>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    <p id="carCountA">{{carCount}}</p>
+{% endif %}
+    

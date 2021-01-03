@@ -2,55 +2,63 @@
 
 
 {% block body %}
-<br>
 <p>Hoşgeldiniz: {{request.user}}</p>
-<a href="{% url 'article:addcar' %}" class="btn btn-danger my-2">Yeni Ekle</a>
+<a href="{% url 'article:createCar' %}" class="btn btn-danger my-2">Yeni Ekle</a>
+
+
 
 <div class="row">
-    <div class="col-lg-8" style="border: solid 1px lightgrey ;">
+    
+    {% if user.is_superuser %}
+
+    <div class="col-lg-8">
         {% include 'includes/dashtable.html' %}
     </div>
-    <div class="col-lg-4" style="border: solid 1px lightgrey ;">
-            <table class="table table-light">
-                <thead>
-                    <tr>
-                        <td>İsim</td>  
-                        <td>Tarih</td>   
-                        <td>Kontrol</td> 
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    {% for message in replies %}
-                    {% if message.isDone == False %}
-                    <tr class="table-danger">
-                        <td><a data-message="{{message.subject}}">{{message.nameSurname}}</a></td>
-                        <td>{{message.date |date:"Y-m-d"}}</td>
-                        <td>{{message.isDone}}</td>
-                    </tr>
-                    {% else %}
-                    <tr class="table-success">
-                        <td>{{message.nameSurname}}</td>
-                        <td>{{message.date |date:"Y-m-d"}}</td>
-                        <td>{{message.isDone}}</td>
-                        
-                    </tr>
-                    {% endif %}
-                    
-                    {% endfor %}
-                        
-                    <script>
-                        $('a').click(function(){
-                            var data = $(this).attr("data-message")
-                            alert(data)
-                        })
-                    </script>
-                </tbody>
-            </table>
+    <div class="col-lg-4">
+        <table class="table table-light">
+            <thead >
+                <tr>
+                    <td>İsim</td>
+                    <td>Detay</td>
+                    <td>Tarih</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for message in replies %}
+                {% if message.isDone == False %}
+                <tr class="table-danger">
+                    <td><a class="ma" data-message="{{message.subject}}">{{message.nameSurname}}</a></td>
+                    <td><a href="{% url 'article:updateContact' message.id %}">Git</a></td>
+                    <td>{{message.date |date:"Y-m-d"}}</td>
+                </tr>
+                {% else %}
+                <tr class="table-success">
+                    <td><a class="ma" data-message="{{message.subject}}">{{message.nameSurname}}</a></td>
+                    <td><a href="{% url 'article:updateContact' message.id %}">Git</a></td>
+                    <td>{{message.date |date:"Y-m-d"}}</td>
+
+                </tr>
+                {% endif %}
+
+                {% endfor %}
+
+                <script>
+                    $('.ma').click(function () {
+                        var data = $(this).attr("data-message")
+                        alert(data)
+                    })
+                </script>
+            </tbody>
+        </table>
     </div>
+    {% else %}
+    {% include 'includes/dashtable.html' %}
+        
+    {% endif %}
+        
 </div>
 
 
-    
+
 {% endblock body %}
-    

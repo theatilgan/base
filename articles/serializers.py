@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import Article
+from rest_framework.validators import UniqueTogetherValidator
+
 
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
@@ -7,12 +9,14 @@ class ArticleSerializer(serializers.ModelSerializer):
         # fields = ('alis','satis') // belirtilen kisimlari ceker.
         # fields = '__all__' // tum kisimlari ceker.
         fields = [
+            "author",
             "pic",
             "year",
             "km",
             "price",
             "make",
             "model",
+            "transmission",
             "fuelType",
             "bodyType",
             "engine",
@@ -20,3 +24,5 @@ class ArticleSerializer(serializers.ModelSerializer):
             "content",
             "isSold",
         ]
+        
+        
