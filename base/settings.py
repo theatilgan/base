@@ -25,7 +25,9 @@ SECRET_KEY = 'ilemun5h)n%mbbk)!hc+r%n0&z$6c3kuyz4gfbrlu%p1m9e$bf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'theatilgan.pythonanywhere.com'
+]
 
 
 # Application definition
@@ -80,14 +82,23 @@ WSGI_APPLICATION = 'base.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'goldencars',
+#        'USER': 'root',
+#        'PASSWORD': '',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#    }
+#}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'goldencars',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': 'theatilgan$mydb',
+        'USER': 'theatilgan',
+        'PASSWORD': 'yonetici',
+        'HOST': 'theatilgan.mysql.pythonanywhere-services.com',
     }
 }
 
