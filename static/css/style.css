@@ -3,21 +3,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
-#Main{
-    padding: 0px 10%;
+table{
+    font-size: 14px;
 }
+
 
 nav{
     position: relative;
     width: 100%;
     height: 100px;
-    background-color: rgb(0, 0, 0);
     padding: 0px 15%;
     color: white;
     display: -ms-flexbox;
@@ -25,32 +29,33 @@ nav{
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     overflow: hidden;
+    box-shadow: rgba(42, 52, 61, 0.16) 0px 4px 8px 0px;
     
 }
 nav > a{
     line-height: 100px;
     font-family: 'Pacifico', cursive;
     font-size: 40px;
-    color: white;
-    text-decoration: underline yellow;
+    color: black;
+    text-decoration: underline rgb(76, 149, 245);
     transition-timing-function: ease-in-out;
     transition-duration: 0.4s;
 
 }
 nav > a > span{
-    color: yellow;
-    text-decoration: underline white;
+    color: rgb(76, 149, 245) ;
+    text-decoration: underline black;
     transition-timing-function: ease-in-out;
     transition-duration: 0.4s;
 }
 
 nav > a:hover{
-    color: yellow;
-    text-decoration: underline white;
+    color: rgb(76, 149, 245);
+    text-decoration: underline black;
 }
 nav > a:hover> span{
-    color: white;
-    text-decoration:underline yellow;
+    color: black;
+    text-decoration:underline rgb(76, 149, 245);
 }
 nav > ul {
     font-family: 'Montserrat', sans-serif;
@@ -70,7 +75,7 @@ nav > ul > li:hover{
 nav > ul > li > a {
     width: 100%;
     display: inline-block;
-    color: white;
+    color: #1773cf;
     transition-timing-function: ease-in-out;
     transition-duration: 0.3s;
 }
@@ -78,6 +83,95 @@ nav > ul > li > a:hover{
     color: tomato;
     text-decoration: none;
 }
+
+
+#Landing{
+    font-family: 'Poppins', sans-serif;
+    min-height: calc(100vh - 100px);
+    width: 100%;
+    background-color: #1773cf;
+    color: white;
+    padding: 20px 5% 20px 10%;
+    
+
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+#Landing > div:nth-of-type(1){
+    line-height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#Landing > div:nth-of-type(1)>h4{
+    font-size: 40px;
+    
+    font-weight: bold;
+}
+#Landing > div:nth-of-type(2){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 769px) {
+    #Landing > div:nth-of-type(2){
+        margin-top: 10px;
+    }
+  }
+
+#LndgForm{
+    background-color: #165ea7;
+    min-width: 350px;
+    border: 3px solid white;
+    border-radius: 15px;
+    padding: 30px;
+    
+}
+#LndgForm .input-group{
+    border-radius: 3px;
+}
+#LndgForm .input-group-text{
+    border-radius: 3px 0px 0px 3px;
+}
+#LndgForm label{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+#LndgForm .input-group-text {
+    font-family: 'Courier Prime', monospace;
+}
+#LndgForm > hr{
+    color: white;
+    background-color: white;
+    border: 1px solid white;
+}
+#LndgForm button {
+
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+    border: 5px solid white;
+    border-radius: 7px;
+    width: 130px;
+    height: 45px;
+    margin-left: calc((100% - 130px) / 2);
+    margin-top: 30px;
+    outline: none;
+    border: 1px solid white;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
+
+}
+#LndgForm button:hover{
+    background-color: white;
+    color: #1773cf;
+}
+
+
 #Filter{
     font-size: 12px;
     background-color: #F7F7F7;
@@ -96,17 +190,13 @@ nav > ul > li > a:hover{
 
 }
 #CarList{
-    width: 100%;
-    min-height: calc(100vh - 100px);
-    padding-top: 50px;
-    font-family: 'Raleway', sans-serif;
-    overflow: hidden;
+    padding: 0px 10%;
     
 }
 .spesific{
     font-family: 'Montserrat', sans-serif;
     width: 100%;
-    height: 300px;
+    min-height: 300px;
     padding: 20px;
     background-color: #F7F7F7;
 }
@@ -114,7 +204,22 @@ nav > ul > li > a:hover{
 .CarPic{
     height: 200px;
     width: 100%;
+    position: relative;
     overflow: hidden;
+}
+.CarPic > div {
+    border-radius: 7px 0px 0px 7px;
+    font-family: 'Poppins', sans-serif;
+    width: 120px;
+    height: 40px;
+    background-color:  #1773cf;
+    margin-left: calc(100% - 125px);
+    margin-top: 140px;
+    z-index: 50;
+    position: absolute;
+    color: white;
+    text-align: center;
+    line-height: 40px;
 }
 .CarPic img {
     width: 100%;
@@ -128,25 +233,107 @@ nav > ul > li > a:hover{
     margin-bottom: 20px;
 }
 .spesific > ul {
+    
     width: 100%;
     list-style: none;
     margin-bottom: 30px;
 }
 .spesific > ul span{
-    font-size: 12px;
+    font-size: 14px;
 }
 .spesific > ul > li {
     text-align: center;
     width: calc(100% / 3);
     float: left;
 }
-.spesific > ul > li:last-child{
+
+#CarDetail{
+    padding: 50px 10%;
+}
+#CarDetail img{
+    width: 100%;
+    height: 100%;
+}
+#CarDetail ul{
+    float: right;
+    margin: auto 0px auto auto;
+    list-style: none;
+}
+#CarDetail ul > li{
+    float: right;
+    width: 100px;
+    margin-left: 15px;
+    
+}
+#CarDetail ul > li >a{
+    width: 100%;
+    text-align: center;
 }
 
-table{
-    font-size: 14px;
-}
 
+/* İletişim de adın üstüne gelince */
 .ma:hover{
     cursor: pointer;
+}
+
+#DashMain{
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    background-color: #E6F1FF;
+    /*0background-color: #1773cf;*/
+    padding: 50px 10% 0px 10%;
+}
+#DashMain > .row > div {
+    padding: 10px;
+}
+#DashMain > .row  .Fp {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    min-height: 230px;
+}
+#DashMain > .row  .Fp a{
+    width: 100%;
+
+}
+#DashMain > .row  .Fp > .row > div{
+    padding:0px 10px;
+    
+}
+.Contact{
+    border-radius: 10px;
+    
+    height: 200px;
+    box-shadow: 0px 2px 30px 1px  #4b98fd3d;
+    font-size: 14px;
+    overflow: hidden;
+}
+.Contact img{
+    margin-top: 40px;
+    width: 100%;
+
+}
+.Contact p {
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
+}
+.Contact a {
+    margin-top: 5px;
+    width: 100%;
+    text-align: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.4s;
+}
+.Contact p:hover{
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.Contact span{
+    width: 100%;
+    text-align: center;
+    color: #434547a6;
 }

@@ -40,7 +40,7 @@ def dashboard(request):
 
     if request.user.is_superuser:
         articles = Article.objects.all()
-        replies = Message.objects.all() 
+        replies = Message.objects.filter(isDone=False)[:6] 
         context = {
             "articles":articles,
             "replies":replies

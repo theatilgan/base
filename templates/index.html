@@ -1,115 +1,80 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goldens: Hızlı tutkulu hatasız</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-</head>
-
-<body>
-    <div class="container">
-        {% if messages %}
-                
-                    {% for message in messages %}
-                    {% if message.tags == "info" %}
-                    <div class="alert alert-danger">{{ message }}</div>
-                    {% else %}
-                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-
-                    {% endif %}
+{% extends 'layout.html' %}
 
 
-                    {% endfor %}
-                
-                {% endif %}
-        
+{% block body %}
+
+<div id="Landing"  >
+    <div class="col-md-4 ">
+        <h4>Her araba özeldir,<br>
+            sizin tercihiniz <br> nasıl ? </h4>
     </div>
-    <div id="Hg" class="row">
-        <img src="{% static 'img/pex.jpg' %}" class="" alt="">
-        <nav>
-            <a href="{% url 'article:index' %}"><span>Golden</span>Cars</a>
-            <ul>
-                <li><a href="{% url 'article:contact' %}">İletişim</a></li>
-                <li><a href="{% url 'article:listCar' %}">Satıştaki Araçlar</a></li>
-                {% if request.user.is_authenticated %}
-                <li><a href="{% url 'article:dashboard' %}">Dashboard</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-        <div id="Sec1" class="row">
-            <form method = "post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <label for="">Fiyat</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="lbminval">Min: 110 Bin</span>
-                    </div>
-                    <div class="form-control ">
-                        <input style="width: 100%;" name="minPrice" id="minval" value="110" min="100" max="999" class="mt-1" type="range">
-                    </div>
+    <div class="col-md-8 col-lg-8" >
+        <form id="LndgForm" method= "post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="">Fiyat</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="lbminval">Min: 110 Bin</span>
                 </div>
-                <div class="input-group mt-1">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="lbmaxval">Max: 600 Bin</span>
-                    </div>
-                    <div class="form-control ">
-                        <input style="width: 100%;" name="maxPrice" id="maxval" value="600" min="100" max="999" class="mt-1" type="range">
-                    </div>
+                <div class="form-control">
+                    <input style="width: 100%;" name="minPrice" id="minval" value="110" min="100" max="999" class="mt-1" type="range">
                 </div>
-                <hr>
-                <label for="">Vites</label>
-                <div class="input-group">
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="lbtransmission">Seçim: </span>
-                    </div>
-                    <select class="form-control" name="transmission" id="transmissionval">
-                        <option value="Hepsi">Hepsi</option>
-                        <option value="Otomatik">Otomatik</option>
-                        <option value="Yarı Otomatik">Yarı Otomatik</option>
-                        <option value="Manuel">Manuel</option>
-                    </select>
+            </div>
+            <div class="input-group mt-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="lbmaxval">Max: 600 Bin</span>
                 </div>
-                <hr>
-                <label for="">Yakıt</label>
-                <div class="input-group">
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="lbfuel">Seçim: </span>
-                    </div>
-                    <select class="form-control" name="fuel" id="fuelval">
-                        <option value="Hepsi">Hepsi</option>
-                        <option value="Benzin">Benzin</option>
-                        <option value="Benzin Lpg">Benzin & Lpg</option>
-                        <option value="Dizel">Dizel</option>
-                        <option value="Elektrik">Elektrik</option>
-                        <option value="Hybrid">Hybrid</option>
-                    </select>
+                <div class="form-control">
+                    <input style="width: 100%;" name="maxPrice" id="maxval" value="600" min="100" max="999" class="mt-1" type="range">
                 </div>
-                <button id="quickfind" type ="submit"> Aracını Bul </button>
-            </form>
-            <script>
-                var minval = document.getElementById("minval");
-                var lbminval = document.getElementById("lbminval");
-                var maxval = document.getElementById("maxval");
-                var lbmaxval = document.getElementById("lbmaxval");
-                
-                minval.oninput = function() {
-                  lbminval.innerHTML = "Min: " + this.value + " Bin";
-                }
-                maxval.oninput = function() {
-                  lbmaxval.innerHTML = "Max: " + this.value + " Bin";
-                }
-                
-            </script>
-
-        </div>
-
+            </div>
+            <hr>
+            <label for="">Vites</label>
+            <div class="input-group">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="lbtransmission">Seçim: </span>
+                </div>
+                <select class="form-control" name="transmission" id="transmissionval">
+                    <option value="Hepsi">Hepsi</option>
+                    <option value="Otomatik">Otomatik</option>
+                    <option value="Yarı Otomatik">Yarı Otomatik</option>
+                    <option value="Manuel">Manuel</option>
+                </select>
+            </div>
+            <hr>
+            <label for="">Yakıt</label>
+            <div class="input-group">
+                <div class="input-group-append">
+                    <span class="input-group-text" id="lbfuel">Seçim: </span>
+                </div>
+                <select class="form-control" name="fuel" id="fuelval">
+                    <option value="Hepsi">Hepsi</option>
+                    <option value="Benzin">Benzin</option>
+                    <option value="Benzin Lpg">Benzin & Lpg</option>
+                    <option value="Dizel">Dizel</option>
+                    <option value="Elektrik">Elektrik</option>
+                    <option value="Hybrid">Hybrid</option>
+                </select>
+            </div>
+            <button id="quickfind" type ="submit"> Aracını Bul </button>
+        </form>
+        <script>
+            var minval = document.getElementById("minval");
+            var lbminval = document.getElementById("lbminval");
+            var maxval = document.getElementById("maxval");
+            var lbmaxval = document.getElementById("lbmaxval");
+            
+            minval.oninput = function() {
+              lbminval.innerHTML = "Min: " + this.value + " Bin";
+            }
+            maxval.oninput = function() {
+              lbmaxval.innerHTML = "Max: " + this.value + " Bin";
+            }
+            
+        </script>
     </div>
-
-</body>
-
-</html>
+    
+</div>
+    
+{% endblock body %}
+    

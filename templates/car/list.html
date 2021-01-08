@@ -11,20 +11,21 @@
             <p id="carCount">{{carCount}} araç listelendi</p>
         </div>
         <div class="col-xl-3">
+
             <div class="input-group mt-1">
                 <div class="input-group-append">
-                    <span class="input-group-text">Bayi: </span>
+                    <span class="input-group-text" id="lbfuel">Yakıt: </span>
                 </div>
-                <select class="form-control" id="user">
-                    <option value="Hepsi">HEPSİ</option>
-                    <option value="İstanbul">İSTANBUL</option>
-                    <option value="Ankara">ANKARA</option>
-                    <option value="İzmir">İZMİR</option>
-                    <option value="Antalya">ANTALYA</option>
-                    <option value="Bursa">BURSA</option>
-
+                <select class="form-control" name="fuel" id="fuelval">
+                    <option value="Hepsi">Hepsi</option>
+                    <option value="Benzin">Benzin</option>
+                    <option value="Benzin Lpg">Benzin & Lpg</option>
+                    <option value="Dizel">Dizel</option>
+                    <option value="Elektrik">Elektrik</option>
+                    <option value="Hybrid">Hybrid</option>
                 </select>
             </div>
+            
             <div class="input-group mt-1">
                 <div class="input-group-append">
                     <span class="input-group-text">Vites: </span>
@@ -58,18 +59,19 @@
             </div>
         </div>
         <div class="col-xl-3">
-
+            
             <div class="input-group mt-1">
                 <div class="input-group-append">
-                    <span class="input-group-text" id="lbfuel">Yakıt: </span>
+                    <span class="input-group-text">Bayi: </span>
                 </div>
-                <select class="form-control" name="fuel" id="fuelval">
-                    <option value="Hepsi">Hepsi</option>
-                    <option value="Benzin">Benzin</option>
-                    <option value="Benzin Lpg">Benzin & Lpg</option>
-                    <option value="Dizel">Dizel</option>
-                    <option value="Elektrik">Elektrik</option>
-                    <option value="Hybrid">Hybrid</option>
+                <select class="form-control" id="user">
+                    <option value="Hepsi">HEPSİ</option>
+                    <option value="İstanbul">İSTANBUL</option>
+                    <option value="Ankara">ANKARA</option>
+                    <option value="İzmir">İZMİR</option>
+                    <option value="Antalya">ANTALYA</option>
+                    <option value="Bursa">BURSA</option>
+
                 </select>
             </div>
             <div class="input-group mt-1">

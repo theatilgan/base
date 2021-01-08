@@ -8,31 +8,32 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    
+
     <title>Goldens: Hızlı tutkulu hatasız</title>
 </head>
 
 <body>
 
     {% include 'includes/navbar.html' %}
-    <div class="container">
-        {% if messages %}
-                
-                    {% for message in messages %}
-                    {% if message.tags == "info" %}
-                    <div class="alert alert-danger">{{ message }}</div>
-                    {% else %}
-                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
 
-                    {% endif %}
+    {% if messages %}
+    <div class="container mt-2"></div>
+
+    {% for message in messages %}
+    {% if message.tags == "info" %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% else %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+
+    {% endif %}
 
 
-                    {% endfor %}
-                
-                {% endif %}
-        
+    {% endfor %}
     </div>
-    <div id="Main">
+    {% endif %}
+
+
+    <div>
         {% block body %}
         {% endblock body %}
     </div>

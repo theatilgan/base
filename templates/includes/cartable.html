@@ -4,17 +4,19 @@
 <div id="carListA" class="row" data-count="{{carCount}}">
 
     {% for article in articles %}
-    <div class="col-md-6 col-lg-4">
+    <div class="col-md-6 col-lg-4 mt-2" >
         <div class="CarPic">
+            <div><p>{{article.price}} TL</p></div>
             {% if article.pic %}
             <img src="{{article.pic.url}}" class="img-thumbnail" alt="">
             {% else %}
             <img src="../static/img/favicon.jpg" class="img-thumbnail" alt="">
 
             {% endif %}
+            
         </div>
         <div class="spesific">
-            <h5>{{article.make}} {{article.model}}</h5>
+            <h5> <a href="{% url 'article:detail' article.id %}">{{article.make}} - {{article.model}}</a></h5>
 
             <ul>
                 <li><span>{{article.year}}</span></li>
@@ -23,10 +25,29 @@
             </ul>
             <br>
             <hr>
+            <table class="table table-dark">
+                <tbody>
+                    <tr>
+                        <td>Kilometre</td>
+                        <td>{{article.km}}</td>
+                    </tr>
+                    <tr>
+                        <td>Motor</td>
+                        <td>{{article.engine}}</td>
+                    </tr>
+                    <tr>
+                        <td>Paket</td>
+                        <td>{{article.variant}}</td>
+                    </tr>
+                    <tr>
+                        <td>Eklenme Tarihi</td>
+                        <td>{{article.date |date:"Y-m-d"}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     {% endfor %}
 </div>
-    <p id="carCountA">{{carCount}}</p>
 {% endif %}
     
