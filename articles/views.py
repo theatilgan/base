@@ -12,14 +12,17 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     if request.method == "POST":
-        minPrice = int(request.POST["minPrice"]) + 99900
-        maxPrice = int(request.POST["maxPrice"]) + 9990001
+        minPrice = request.POST["minPrice"] + "000"
+        minPrice = int(minPrice)
+        maxPrice = request.POST["maxPrice"] + "000"
+        maxPrice= int(maxPrice)
+        
         transmission = request.POST["transmission"]
         fuel = request.POST["fuel"]
         
         articles = Article.objects.filter(isSold=False)
         articles = articles.filter(price__range=(minPrice, maxPrice))
-        print(articles)
+        fullPath = ""
         if transmission == "Hepsi":
             if fuel != "Hepsi":
                 articles = articles.filter(fuelType=fuel)
@@ -32,7 +35,7 @@ def index(request):
             "articles" : articles,
             "carCount" : carCount
         }
-        return render(request,"car/list.html",context)
+        return redirect("article:listCar",context)
     return render(request,"index.html")
 
 @login_required(login_url = "user:login")
@@ -53,19 +56,24 @@ def dashboard(request):
         }
     return render(request,"dashboard.html",context)
 
-def listCar(request):
+def listCar(request,id):
     if request.is_ajax():
-        user = request.POST["user"]
-        dealer = User.objects.get(username = user)
 
-        minPrice = int(request.POST["minPrice"]) + 99900
-        maxPrice = int(request.POST["maxPrice"]) + 9990001
+        minPrice = request.POST["minPrice"] + "000"
+        minPrice = int(minPrice)
+        maxPrice = request.POST["maxPrice"] + "000"
+        maxPrice= int(maxPrice)
         fuel = request.POST["fuel"]
         transmission = request.POST["transmission"]
-        
+
+
+        print(minPrice)
+        print(maxPrice)
+        print(fuel)
+        print(transmission)
+
 
         articles = Article.objects.filter(isSold=False)
-        articles = articles.filter(author = dealer)
         articles = articles.filter(price__range=(minPrice, maxPrice))
         if transmission == "Hepsi":
             if fuel != "Hepsi":
@@ -89,6 +97,7 @@ def listCar(request):
             "carCount":carCount
         }
         return render(request,"car/list.html",context)
+    
     
 
 def detail(request,id):

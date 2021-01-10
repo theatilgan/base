@@ -32,8 +32,8 @@ class Article(models.Model):
     pic = models.FileField(blank=True,null=True,verbose_name="Fotoğraf")
     year = models.PositiveIntegerField(default=2020,validators=[MaxValueValidator(2021),
             MinValueValidator(1980)],verbose_name="Yıl")
-    km = models.FloatField(verbose_name="Km")
-    price = models.FloatField(verbose_name="Fiyat")
+    km = models.PositiveIntegerField(verbose_name="Km")
+    price = models.PositiveIntegerField(verbose_name="Fiyat")
     make = models.CharField(max_length = 20,verbose_name="Marka")
     model = models.CharField(max_length = 20,verbose_name="Model")
     transmission = models.TextField(choices=Transmission,verbose_name="Vites")
@@ -60,7 +60,7 @@ ReplyOption = {
 class Message (models.Model):
 
     nameSurname = models.CharField(max_length=25, verbose_name="Ad Soyad")
-    replyOption = models.TextField(choices=ReplyOption,blank=True,null=True,verbose_name="Nasıl dönüş yapalım")
+    replyOption = models.TextField(default="Mail",choices=ReplyOption,blank=True,null=True,verbose_name="Nasıl dönüş yapalım")
     phone = models.CharField(max_length=11,blank=True,null=True,verbose_name="Telefon")
     mail = models.CharField(max_length=30,blank=True,null=True,verbose_name="Mail")
     subject= models.TextField(blank=False,null=False,max_length=20,verbose_name="Konu")

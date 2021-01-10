@@ -9,7 +9,7 @@ urlpatterns = [
     path('', views.index, name = "index"),
     path('dashboard/', views.dashboard, name = "dashboard"),
 
-    path('list/', views.listCar, name = "listCar"),
+    path('list/<str:id>', views.listCar, name = "listCar"),
     path('car/<int:id>',views.detail,name = "detail"),
     path('create/', views.createCar, name = "createCar"),
     path('update/<int:id>',views.updateCar,name = "update"),

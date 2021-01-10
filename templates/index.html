@@ -11,7 +11,7 @@
     <div class="col-md-8 col-lg-8" >
         <form id="LndgForm" method= "post" enctype="multipart/form-data">
             {% csrf_token %}
-            <label for="">Fiyat</label>
+            <span>Fiyat</span>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="lbminval">Min: 110 Bin</span>
@@ -29,34 +29,27 @@
                 </div>
             </div>
             <hr>
-            <label for="">Vites</label>
-            <div class="input-group">
-                <div class="input-group-append">
-                    <span class="input-group-text" id="lbtransmission">Seçim: </span>
-                </div>
-                <select class="form-control" name="transmission" id="transmissionval">
-                    <option value="Hepsi">Hepsi</option>
-                    <option value="Otomatik">Otomatik</option>
-                    <option value="Yarı Otomatik">Yarı Otomatik</option>
-                    <option value="Manuel">Manuel</option>
-                </select>
-            </div>
+
+            <span>Vites</span>
+            <select class="form-control" name="transmission" id="transmissionval">
+                <option value="Hepsi">Hepsi</option>
+                <option value="Otomatik">Otomatik</option>
+                <option value="Yarı Otomatik">Yarı Otomatik</option>
+                <option value="Manuel">Manuel</option>
+            </select>
             <hr>
-            <label for="">Yakıt</label>
-            <div class="input-group">
-                <div class="input-group-append">
-                    <span class="input-group-text" id="lbfuel">Seçim: </span>
-                </div>
-                <select class="form-control" name="fuel" id="fuelval">
-                    <option value="Hepsi">Hepsi</option>
-                    <option value="Benzin">Benzin</option>
-                    <option value="Benzin Lpg">Benzin & Lpg</option>
-                    <option value="Dizel">Dizel</option>
-                    <option value="Elektrik">Elektrik</option>
-                    <option value="Hybrid">Hybrid</option>
-                </select>
-            </div>
-            <button id="quickfind" type ="submit"> Aracını Bul </button>
+
+            <span>Yakıt</span>
+            <select class="form-control" name="fuel" id="fuelval">
+                <option value="Hepsi">Hepsi</option>
+                <option value="Benzin">Benzin</option>
+                <option value="Benzin Lpg">Benzin & Lpg</option>
+                <option value="Dizel">Dizel</option>
+                <option value="Elektrik">Elektrik</option>
+                <option value="Hybrid">Hybrid</option>
+            </select>
+
+            <button disabled id="quickfind" type ="submit"> Aracını Bul </button>
         </form>
         <script>
             var minval = document.getElementById("minval");
@@ -66,10 +59,12 @@
             
             minval.oninput = function() {
               lbminval.innerHTML = "Min: " + this.value + " Bin";
+              
             }
             maxval.oninput = function() {
               lbmaxval.innerHTML = "Max: " + this.value + " Bin";
             }
+
             
         </script>
     </div>

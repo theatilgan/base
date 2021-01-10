@@ -6,13 +6,7 @@
 
 <div id="DashMain" >
     <div class="row">
-        <div class="col-4">
-            <div class="Fp" >
-                <a href="{% url 'article:createCar' %}" class="btn btn-primary my-2">Araç Ekle</a>
-            </div>
-        </div>
-        
-        <div class="col-8">
+        <div class="col-md-8">
             <div class="Fp">
                 <div class="row">
                     
@@ -75,12 +69,24 @@
                             alert(data)
                         })
                     </script>
+                    {% else %}
+                    <p style="width: 100%;text-align: center;padding-top: 30px;font-weight: bold;">Yeni Mesaj Yok</p>
                     {% endif %}
                         
                     
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="Fp" >
+                <a href="{% url 'article:createCar' %}" class="btn btn-primary my-1">Mesajlar</a>
+                <a href="{% url 'article:createCar' %}" class="btn btn-dark my-1">Araç Ekle</a>
+                <a href="{% url 'article:createCar' %}" class="btn btn-dark my-1">Araçlar</a>
+                <a href="{% url 'article:createCar' %}" class="btn btn-dark my-1">Satılan Araçlar</a>
+            </div>
+        </div>
+        
+       
     </div>
 </div>
 

@@ -26,7 +26,8 @@ SECRET_KEY = 'ilemun5h)n%mbbk)!hc+r%n0&z$6c3kuyz4gfbrlu%p1m9e$bf'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'theatilgan.pythonanywhere.com'
+    'theatilgan.pythonanywhere.com',
+    '127.0.0.1'
 ]
 
 

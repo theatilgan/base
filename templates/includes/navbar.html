@@ -2,9 +2,10 @@
     <a href="{% url 'article:index' %}"><span>Golden</span>Cars</a>
     <ul>
         <li><a href="{% url 'article:contact' %}">İletişim</a></li>
-        <li><a href="{% url 'article:listCar' %}">Satıştaki Araçlar</a></li>
+        <li><a href="{% url 'article:listCar' 'all' %}">Satıştaki Araçlar</a></li>
         {% if request.user.is_authenticated %}
         <li><a href="{% url 'article:dashboard' %}">Dashboard</a></li>
         {% endif %}
     </ul>
 </nav>
+

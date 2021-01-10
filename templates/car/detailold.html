@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+{% for i in article %}
+<div id="CarDetail">
+    
+    {% if request.user.is_authenticated %}
+    <div class="row">
+        <h2 class="mb-2" >{{i.make}} - {{i.model}}</h2>
+        
+    <ul>
+        <li><a class="btn btn-info" href="{% url 'article:delete' i.id %}">Sil</a></li>
+        <li><a class="btn btn-info" href="{% url 'article:update' i.id %}">Güncelle</a></li>
+        <li><a class="btn btn-info" href="">ID: {{i.id}}</a></li>
+
+    </ul>
+    </div>
+    {% endif %}
+        
+    
+    <div class="row">
+        <div class="col-6">
+            {% if i.pic %}
+            <img src="{{ i.pic.url }}" class="img-thumbnail">
+            {% else %}
+            <img src="../static/img/favicon.jpg" class="img-thumbnail" alt="">
+            {% endif %}
+        </div>
+        <div class="col-6">
+            <table class="table table-dark">
+                <tbody>
+                    <tr>
+                        <td>Bayi</td>
+                        <td>{{i.author}}</td>
+                    </tr>
+                    <tr>
+                        <td>Marka</td>
+                        <td>{{i.make}}</td>
+                    </tr>
+                    <tr>
+                        <td>Model</td>
+                        <td>{{i.model}}</td>
+                    </tr>
+                    <tr>
+                        <td>Fiyat</td>
+                        <td>{{i.price}} TL</td>
+                    </tr>
+                    <tr>
+                        <td>Yıl</td>
+                        <td>{{i.year}}</td>
+                    </tr>
+                    <tr>
+                        <td>Vites</td>
+                        <td>{{i.transmission}}</td>
+                    </tr>
+                    <tr>
+                        <td>Yakıt</td>
+                        <td>{{i.fuelType}}</td>
+                    </tr>
+                    <tr>
+                        <td>Kasa</td>
+                        <td>{{i.bodyType}}</td>
+                    </tr>
+                    <tr>
+                        <td>Kilometre</td>
+                        <td>{{i.km}}</td>
+                    </tr>
+                    <tr>
+                        <td>Motor</td>
+                        <td>{{i.engine}}</td>
+                    </tr>
+                    <tr>
+                        <td>Paket</td>
+                        <td>{{i.variant}}</td>
+                    </tr>
+                    <tr>
+                        <td>Eklenme Tarihi</td>
+                        <td>{{i.date |date:"Y-m-d"}}</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    
+</div>
+{% endfor %}
+    
+{% endblock body %}
+    
