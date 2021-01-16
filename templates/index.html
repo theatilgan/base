@@ -9,64 +9,7 @@
             sizin tercihiniz <br> nasıl ? </h4>
     </div>
     <div class="col-md-8 col-lg-8" >
-        <form id="LndgForm" method= "post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <span>Fiyat</span>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="lbminval">Min: 110 Bin</span>
-                </div>
-                <div class="form-control">
-                    <input style="width: 100%;" name="minPrice" id="minval" value="110" min="100" max="999" class="mt-1" type="range">
-                </div>
-            </div>
-            <div class="input-group mt-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="lbmaxval">Max: 600 Bin</span>
-                </div>
-                <div class="form-control">
-                    <input style="width: 100%;" name="maxPrice" id="maxval" value="600" min="100" max="999" class="mt-1" type="range">
-                </div>
-            </div>
-            <hr>
-
-            <span>Vites</span>
-            <select class="form-control" name="transmission" id="transmissionval">
-                <option value="Hepsi">Hepsi</option>
-                <option value="Otomatik">Otomatik</option>
-                <option value="Yarı Otomatik">Yarı Otomatik</option>
-                <option value="Manuel">Manuel</option>
-            </select>
-            <hr>
-
-            <span>Yakıt</span>
-            <select class="form-control" name="fuel" id="fuelval">
-                <option value="Hepsi">Hepsi</option>
-                <option value="Benzin">Benzin</option>
-                <option value="Benzin Lpg">Benzin & Lpg</option>
-                <option value="Dizel">Dizel</option>
-                <option value="Elektrik">Elektrik</option>
-                <option value="Hybrid">Hybrid</option>
-            </select>
-
-            <button disabled id="quickfind" type ="submit"> Aracını Bul </button>
-        </form>
-        <script>
-            var minval = document.getElementById("minval");
-            var lbminval = document.getElementById("lbminval");
-            var maxval = document.getElementById("maxval");
-            var lbmaxval = document.getElementById("lbmaxval");
-            
-            minval.oninput = function() {
-              lbminval.innerHTML = "Min: " + this.value + " Bin";
-              
-            }
-            maxval.oninput = function() {
-              lbmaxval.innerHTML = "Max: " + this.value + " Bin";
-            }
-
-            
-        </script>
+        <a href="{% url 'article:listCar' %}" id="quickfind" type ="submit"> Aramaya başla </a>
     </div>
     
 </div>

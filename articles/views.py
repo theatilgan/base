@@ -11,31 +11,6 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
-    if request.method == "POST":
-        minPrice = request.POST["minPrice"] + "000"
-        minPrice = int(minPrice)
-        maxPrice = request.POST["maxPrice"] + "000"
-        maxPrice= int(maxPrice)
-        
-        transmission = request.POST["transmission"]
-        fuel = request.POST["fuel"]
-        
-        articles = Article.objects.filter(isSold=False)
-        articles = articles.filter(price__range=(minPrice, maxPrice))
-        fullPath = ""
-        if transmission == "Hepsi":
-            if fuel != "Hepsi":
-                articles = articles.filter(fuelType=fuel)
-        else:
-            articles = articles.filter(transmission=transmission)
-            if fuel != "Hepsi":
-                articles = articles.filter(fuelType=fuel)
-        carCount = len(articles)
-        context = {
-            "articles" : articles,
-            "carCount" : carCount
-        }
-        return redirect("article:listCar",context)
     return render(request,"index.html")
 
 @login_required(login_url = "user:login")
@@ -56,7 +31,7 @@ def dashboard(request):
         }
     return render(request,"dashboard.html",context)
 
-def listCar(request,id):
+def listCar(request):
     if request.is_ajax():
 
         minPrice = request.POST["minPrice"] + "000"
@@ -65,12 +40,6 @@ def listCar(request,id):
         maxPrice= int(maxPrice)
         fuel = request.POST["fuel"]
         transmission = request.POST["transmission"]
-
-
-        print(minPrice)
-        print(maxPrice)
-        print(fuel)
-        print(transmission)
 
 
         articles = Article.objects.filter(isSold=False)
